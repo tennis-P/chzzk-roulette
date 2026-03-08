@@ -1,3 +1,29 @@
-Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
+# 🎰 치지직 룰렛
 
-Learn more at https://developers.google.com/idx/guides/customize-idx-env
+치지직(Chzzk) 스트리머를 위한 **실시간 시청자 참여형 룰렛 시스템**입니다.  
+후원 메시지와 채팅 명령어를 통해 시청자가 직접 룰렛 항목을 추가할 수 있습니다.
+
+---
+
+## ✨ 주요 기능
+
+### 🎡 룰렛
+- 항목별 칸 수 조절 (+/- 버튼)
+- 각 항목의 당첨 확률(%) 실시간 표시
+- 부드러운 스핀 애니메이션
+- 당첨 결과 오버레이 팝업
+
+### 💬 채팅 명령어
+- 시청자가 채팅에 명령어를 입력하면 룰렛 항목 자동 추가
+- 명령어 직접 설정 가능 (기본값: `!룰렛추가`)
+- 예시: `!룰렛추가 치즈` → **"치즈"** 항목 추가
+- ON/OFF 토글로 켜고 끌 수 있음
+
+### 🎁 후원 연동
+- 시청자 후원 시 **메시지 내용**이 룰렛 항목으로 자동 추가
+- 칸당 치즈 금액 설정 (예: 100치즈 = 1칸)
+- 시청자당 최대 칸 수 제한 설정 가능
+- ON/OFF 토글로 켜고 끌 수 있음
+
+### 🖥️ UI / 편의 기능
+- 헤더 슬라이더로 화면 배율 조절 (80% ~ 150%)
