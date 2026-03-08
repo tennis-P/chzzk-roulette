@@ -503,7 +503,9 @@ function addSlot(name, count = 1) {
 
 function changeEntries(i, delta) {
   const max = parseInt(document.getElementById('maxSlots').value) || 10;
-  slots[i].entries = Math.min(max, Math.max(1, slots[i].entries + delta));
+  const next = slots[i].entries + delta;
+  if (next < 1) { slots.splice(i, 1); }
+  else { slots[i].entries = Math.min(max, next); }
   renderSlots(); drawWheel();
 }
 
