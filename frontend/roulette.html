@@ -13,16 +13,10 @@
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
-    /* ── 보조폰트: A2z (100~900) ── */
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-1Thin.woff2') format('woff2'); font-weight:100; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-2ExtraLight.woff2') format('woff2'); font-weight:200; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-4Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-8ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
-    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-9Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+    /* ── 보조폰트: Aggravo ── */
+    @font-face { font-family:'Aggravo'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Aggravo'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff') format('woff'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Aggravo'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff'); font-weight:700; font-display:swap; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -69,7 +63,7 @@
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3;
     }
-    .brand { font-family:'A2z',sans-serif; font-size:1.05rem; color:var(--accent); letter-spacing:1px; }
+    .brand { font-family:'Aggravo',sans-serif; font-size:1.05rem; color:var(--accent); letter-spacing:1px; }
     .channel-badge {
       display:flex; align-items:center; gap:6px;
       background:var(--accent-dim); border:1px solid var(--accent-border);
@@ -251,7 +245,7 @@
       transform:translate(-50%,-50%);
       width:68px; height:68px; border-radius:50%;
       background:var(--bg); border:2px solid var(--accent); color:var(--accent);
-      font-family:'A2z',sans-serif; font-size:0.82rem; letter-spacing:1px;
+      font-family:'Aggravo',sans-serif; font-size:0.82rem; letter-spacing:1px;
       cursor:pointer; z-index:10; transition:all 0.2s;
       box-shadow:0 0 16px var(--accent-glow);
     }
@@ -260,7 +254,7 @@
 
     .result-box { min-height:52px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
     .result-label { font-size:0.62rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted2); }
-    .result-name { font-family:'A2z',sans-serif; font-size:1.7rem; color:var(--accent); text-shadow:0 0 20px var(--accent-glow); animation:pop 0.4s ease; }
+    .result-name { font-family:'Aggravo',sans-serif; font-size:1.7rem; color:var(--accent); text-shadow:0 0 20px var(--accent-glow); animation:pop 0.4s ease; }
     @keyframes pop { from{transform:scale(0.6);opacity:0} to{transform:scale(1);opacity:1} }
 
     .ctrl-row { display:flex; gap:8px; }
@@ -287,7 +281,7 @@
     .winner-emoji { font-size:5rem; animation:wbounce 0.7s ease infinite alternate; }
     @keyframes wbounce { from{transform:scale(1) rotate(-5deg)} to{transform:scale(1.1) rotate(5deg)} }
     .winner-label { font-size:0.72rem; letter-spacing:5px; color:var(--muted2); text-transform:uppercase; }
-    .winner-name { font-family:'A2z',sans-serif; font-size:clamp(2.2rem,8vw,4.5rem); color:var(--accent); text-shadow:0 0 40px var(--accent-glow); text-align:center; padding:0 24px; }
+    .winner-name { font-family:'Aggravo',sans-serif; font-size:clamp(2.2rem,8vw,4.5rem); color:var(--accent); text-shadow:0 0 40px var(--accent-glow); text-align:center; padding:0 24px; }
     .winner-ring { position:absolute; width:300px; height:300px; border-radius:50%; border:1px solid var(--accent-border); animation:ringPulse 1.5s ease-in-out infinite; }
     @keyframes ringPulse { 0%{transform:scale(0.8);opacity:0.5} 100%{transform:scale(1.5);opacity:0} }
     .btn-close { margin-top:8px; height:42px; padding:0 28px; background:transparent; border:1px solid var(--accent-border); border-radius:10px; color:var(--accent); font-size:0.85rem; cursor:pointer; transition:all 0.2s; font-family:'Pretendard',sans-serif; }
@@ -297,13 +291,41 @@
     .toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%); background:var(--surf2); border:1px solid var(--accent-border); border-radius:10px; padding:10px 20px; font-size:0.82rem; color:var(--accent); z-index:200; opacity:0; pointer-events:none; transition:opacity 0.3s; white-space:nowrap; }
     .toast.show { opacity:1; }
 
+
+    /* ── 줌 컨트롤 ── */
+    .zoom-wrap { display:flex; align-items:center; gap:8px; }
+    .zoom-label { font-size:0.68rem; color:var(--muted2); white-space:nowrap; min-width:36px; text-align:right; font-family:'Pretendard',sans-serif; }
+    .zoom-slider {
+      -webkit-appearance:none; appearance:none;
+      width:90px; height:4px; background:var(--surf3);
+      border-radius:2px; outline:none; cursor:pointer;
+    }
+    .zoom-slider::-webkit-slider-thumb {
+      -webkit-appearance:none; width:14px; height:14px; border-radius:50%;
+      background:var(--accent); cursor:grab; box-shadow:0 0 6px var(--accent-glow);
+      transition:box-shadow 0.15s;
+    }
+    .zoom-slider::-webkit-slider-thumb:active { cursor:grabbing; box-shadow:0 0 14px var(--accent-glow); }
+    .zoom-slider::-moz-range-thumb { width:14px; height:14px; border-radius:50%; background:var(--accent); cursor:grab; border:none; }
+    .zoom-reset {
+      height:22px; padding:0 8px; background:transparent;
+      border:1px solid var(--border2); border-radius:5px;
+      color:var(--muted2); font-size:0.64rem; cursor:pointer;
+      transition:all 0.2s; white-space:nowrap; font-family:'Pretendard',sans-serif;
+    }
+    .zoom-reset:hover { border-color:var(--accent-border); color:var(--accent); }
+    #zoomWrapper {
+      flex:1; display:flex; flex-direction:column;
+      transform-origin:top left; transition:transform 0.1s ease;
+      overflow:hidden;
+    }
     /* 개인정보처리방침 모달 */
     .modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:300; align-items:center; justify-content:center; padding:20px; }
     .modal-bg.show { display:flex; }
     .modal { background:#111; border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:32px; max-width:560px; width:100%; max-height:80vh; overflow-y:auto; position:relative; }
     .modal::-webkit-scrollbar { width:4px; }
     .modal::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
-    .modal-title { font-family:'A2z',sans-serif; font-size:1.2rem; color:var(--accent); margin-bottom:6px; }
+    .modal-title { font-family:'Aggravo',sans-serif; font-size:1.2rem; color:var(--accent); margin-bottom:6px; }
     .modal-date  { font-size:0.72rem; color:#555; margin-bottom:24px; }
     .modal h3    { font-size:0.85rem; font-weight:700; color:#ddd; margin:20px 0 8px; }
     .modal p, .modal li { font-size:0.8rem; color:#888; line-height:1.8; }
@@ -367,12 +389,17 @@
   <div class="brand">🎰 치지직 룰렛</div>
   <div class="channel-badge"><span>📺</span><span id="channelBadge">로딩 중...</span></div>
   <div class="header-right">
+    <div class="zoom-wrap">
+      <input class="zoom-slider" id="zoomSlider" type="range" min="80" max="150" value="100" step="1" oninput="applyZoom(this.value)"/>
+      <span class="zoom-label" id="zoomLabel">100%</span>
+      <button class="zoom-reset" onclick="applyZoom(100)">초기화</button>
+    </div>
     <button class="privacy-btn" onclick="openPrivacy()">개인정보처리방침</button>
     <button class="back-btn"    onclick="location.href='/'">← 채널 변경</button>
   </div>
 </header>
 
-<main>
+<div id="zoomWrapper"><main>
 
   <!-- 왼쪽: 설정 -->
   <div class="panel">
@@ -447,6 +474,7 @@
   </div>
 
 </main>
+</div>
 
 <script>
 // ══════════════════════════════════════
@@ -704,6 +732,23 @@ function closePrivacy() { document.getElementById('privacyModal').classList.remo
 document.getElementById('privacyModal').addEventListener('click', e=>{
   if(e.target===document.getElementById('privacyModal')) closePrivacy();
 });
+
+
+// ══════════════════════════════════════
+// 줌 컨트롤
+// ══════════════════════════════════════
+function applyZoom(val) {
+  val = Math.min(150, Math.max(80, parseInt(val)));
+  const wrapper = document.getElementById('zoomWrapper');
+  const scale   = val / 100;
+  wrapper.style.transform = `scale(${scale})`;
+  wrapper.style.width      = `${100 / scale}%`;
+  wrapper.style.height     = `${100 / scale}%`;
+  document.getElementById('zoomSlider').value = val;
+  document.getElementById('zoomLabel').textContent = val + '%';
+  // 룰렛 캔버스 리사이즈
+  setTimeout(() => drawWheel(), 50);
+}
 
 // ══════════════════════════════════════
 // 유틸
