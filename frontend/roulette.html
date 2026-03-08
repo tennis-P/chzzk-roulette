@@ -51,6 +51,25 @@
       background-size: 48px 48px; pointer-events: none; z-index: 0;
     }
 
+
+    /* ── 페이지 진입 애니메이션 ── */
+    @keyframes headerSlide {
+      from { opacity:0; transform:translateY(-16px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes panelFadeLeft {
+      from { opacity:0; transform:translateX(-24px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes panelFadeRight {
+      from { opacity:0; transform:translateX(24px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+
+    header { animation: headerSlide 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+    main > .panel:first-child { animation: panelFadeLeft  0.6s cubic-bezier(0.22,1,0.36,1) 0.15s both; }
+    main > .panel:last-child  { animation: panelFadeRight 0.6s cubic-bezier(0.22,1,0.36,1) 0.25s both; }
+
     /* ── 헤더 ── */
     header {
       height: 52px; min-height: 52px;
@@ -69,7 +88,9 @@
       background:var(--accent-dim); border:1px solid var(--accent-border);
       border-radius:20px; padding:4px 12px;
       font-size:0.76rem; color:var(--accent);
+      transition: background 0.2s, box-shadow 0.2s;
     }
+    .channel-badge:hover { background:rgba(0,255,163,0.18); box-shadow:0 0 10px var(--accent-glow); }
     .header-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
     .privacy-btn {
       height: 28px; padding: 0 10px;
@@ -78,13 +99,6 @@
       cursor: pointer; transition: all 0.2s; font-family:'Pretendard',sans-serif;
     }
     .privacy-btn:hover { border-color: var(--accent-border); color: var(--accent); }
-    .back-btn {
-      height:28px; padding:0 12px;
-      background:transparent; border:1px solid var(--border2);
-      border-radius:6px; color:var(--muted2); font-size:0.72rem;
-      cursor:pointer; transition:all 0.2s; font-family:'Pretendard',sans-serif;
-    }
-    .back-btn:hover { border-color:var(--accent-border); color:var(--accent); }
 
     /* ── 레이아웃 ── */
     main {
@@ -386,8 +400,8 @@
 
 <!-- 헤더 -->
 <header>
-  <div class="brand">🎰 치지직 룰렛</div>
-  <div class="channel-badge"><span>📺</span><span id="channelBadge">로딩 중...</span></div>
+  <div class="brand">치지직 룰렛</div>
+  <div class="channel-badge" onclick="location.href='/'" title="채널 변경" style="cursor:pointer"><span id="channelBadge">로딩 중...</span></div>
   <div class="header-right">
     <div class="zoom-wrap">
       <input class="zoom-slider" id="zoomSlider" type="range" min="80" max="150" value="100" step="1" oninput="applyZoom(this.value)"/>
@@ -395,7 +409,6 @@
       <button class="zoom-reset" onclick="applyZoom(100)">초기화</button>
     </div>
     <button class="privacy-btn" onclick="openPrivacy()">개인정보처리방침</button>
-    <button class="back-btn"    onclick="location.href='/'">← 채널 변경</button>
   </div>
 </header>
 
