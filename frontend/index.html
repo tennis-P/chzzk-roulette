@@ -342,7 +342,7 @@
     document.getElementById('loadingRow').classList.add('show');
 
     try {
-      const res = await fetch(`/channel/${channelId}`);
+      const res = await fetch(`/api/channel/${channelId}`);
       const data = await res.json();
 
       if (!data?.content?.channelId) throw new Error('존재하지 않는 채널이에요');
