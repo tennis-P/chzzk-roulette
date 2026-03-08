@@ -6,285 +6,186 @@
   <title>치지직 룰렛</title>
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet"/>
   <style>
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
-      font-weight: 100; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
-      font-weight: 200; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
-      font-weight: 300; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
-      font-weight: 400; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
-      font-weight: 500; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
-      font-weight: 600; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
-      font-weight: 700; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
-      font-weight: 800; font-display: swap;
-    }
-    @font-face {
-      font-family: 'Pretendard';
-      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
-      font-weight: 900; font-display: swap;
-    }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2'); font-weight:100; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2'); font-weight:200; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #000000;
-      --accent: #00FFA3;
-      --accent-dim: rgba(0,255,163,0.12);
-      --accent-glow: rgba(0,255,163,0.25);
-      --text: #f0f0f0;
-      --muted: #555;
-      --surf: rgba(255,255,255,0.03);
-      --border: rgba(255,255,255,0.07);
-      --border-accent: rgba(0,255,163,0.3);
+      --bg:           #000000;
+      --accent:       #00FFA3;
+      --accent-dim:   rgba(0,255,163,0.12);
+      --accent-glow:  rgba(0,255,163,0.25);
+      --text:         #f0f0f0;
+      --muted:        #555;
+      --surf:         rgba(255,255,255,0.03);
+      --border:       rgba(255,255,255,0.07);
     }
 
     body {
       font-family: 'Pretendard', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
+      background: var(--bg); color: var(--text);
+      height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
     }
 
-    /* 배경 효과 */
-    .bg-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.12;
-      pointer-events: none;
-    }
-    .bg-glow.g1 {
-      width: 600px; height: 600px;
-      background: var(--accent);
-      top: -200px; left: -200px;
-      animation: drift 10s ease-in-out infinite alternate;
-    }
-    .bg-glow.g2 {
-      width: 400px; height: 400px;
-      background: var(--accent);
-      bottom: -150px; right: -100px;
-      animation: drift 14s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes drift {
-      from { transform: translate(0, 0); }
-      to   { transform: translate(50px, 40px); }
-    }
+    .bg-glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; }
+    .bg-glow.g1 { width:600px; height:600px; background:var(--accent); top:-200px; left:-200px; animation:drift 10s ease-in-out infinite alternate; }
+    .bg-glow.g2 { width:400px; height:400px; background:var(--accent); bottom:-150px; right:-100px; animation:drift 14s ease-in-out infinite alternate-reverse; }
+    @keyframes drift { from{transform:translate(0,0)} to{transform:translate(50px,40px)} }
 
-    /* 그리드 배경 */
     .grid-bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(0,255,163,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,163,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(0,255,163,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,163,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
     }
+    .deco-ring { position:absolute; border-radius:50%; border:1px solid rgba(0,255,163,0.05); top:50%; left:50%; animation:spin-slow 40s linear infinite; }
+    .deco-ring.r1 { width:700px; height:700px; transform:translate(-50%,-50%); }
+    .deco-ring.r2 { width:500px; height:500px; transform:translate(-50%,-50%); border-color:rgba(0,255,163,0.03); }
+    @keyframes spin-slow { to { transform:translate(-50%,-50%) rotate(360deg); } }
 
-    /* 룰렛 장식 */
-    .deco-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(0,255,163,0.05);
-      top: 50%; left: 50%;
-      animation: spin-slow 40s linear infinite;
-    }
-    .deco-ring.r1 { width: 700px; height: 700px; transform: translate(-50%,-50%); }
-    .deco-ring.r2 { width: 500px; height: 500px; transform: translate(-50%,-50%); border-color: rgba(0,255,163,0.03); }
-    @keyframes spin-slow { to { transform: translate(-50%,-50%) rotate(360deg); } }
-
-    /* 컨테이너 */
     .container {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 36px;
-      width: 100%;
-      max-width: 460px;
-      padding: 0 24px;
+      position: relative; z-index: 10;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 28px; width: 100%; max-width: 460px; padding: 0 24px;
     }
 
-    /* 타이틀 */
-    .title-wrap {
-      text-align: center;
-      animation: fadeUp 0.7s ease both;
-    }
-    .title-eyebrow {
-      font-size: 0.7rem;
-      letter-spacing: 5px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .title {
-      font-family: 'Black Han Sans', sans-serif;
-      font-size: clamp(3.5rem, 12vw, 5.5rem);
-      line-height: 0.95;
-      letter-spacing: -3px;
-      color: #fff;
-    }
-    .title .highlight {
-      color: var(--accent);
-      display: block;
-    }
-    .title-desc {
-      margin-top: 14px;
-      font-size: 0.82rem;
-      color: var(--muted);
-      letter-spacing: 0.5px;
-    }
+    .title-wrap { text-align: center; animation: fadeUp 0.7s ease both; }
+    .title-eyebrow { font-size:0.7rem; letter-spacing:5px; color:var(--accent); text-transform:uppercase; margin-bottom:14px; }
+    .title { font-family:'Black Han Sans',sans-serif; font-size:clamp(3.5rem,12vw,5.5rem); line-height:0.95; letter-spacing:-3px; color:#fff; }
+    .title .highlight { color:var(--accent); display:block; }
+    .title-desc { margin-top:14px; font-size:0.82rem; color:var(--muted); letter-spacing:0.5px; }
 
-    /* 카드 */
     .card {
-      width: 100%;
-      background: var(--surf);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
+      width: 100%; background: var(--surf); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px;
       animation: fadeUp 0.7s 0.15s ease both;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
     .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0.4;
+      content:''; position:absolute; top:0; left:0; right:0; height:1px;
+      background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0.4;
     }
 
-    .input-label {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
-      display: block;
-    }
+    .input-label { font-size:0.68rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; display:block; }
 
     .input-field {
-      width: 100%;
-      height: 50px;
-      padding: 0 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      font-family: 'Pretendard', sans-serif;
+      width:100%; height:50px; padding:0 16px;
+      background:rgba(255,255,255,0.04); border:1px solid var(--border);
+      border-radius:10px; color:var(--text);
+      font-family:'Pretendard',sans-serif; font-size:0.9rem;
+      outline:none; transition:border-color 0.2s, box-shadow 0.2s;
+      margin-bottom:12px;
     }
-    .input-field:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-    .input-field::placeholder { color: #333; }
+    .input-field:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow); }
+    .input-field::placeholder { color:#333; }
 
-    .input-hint {
-      font-size: 0.72rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 22px;
-    }
-    .input-hint code {
-      color: var(--accent);
-      background: var(--accent-dim);
-      padding: 1px 6px;
-      border-radius: 4px;
-      font-size: 0.7rem;
-    }
-
-    .btn-enter {
-      width: 100%;
-      height: 50px;
-      background: var(--accent);
-      border: none;
-      border-radius: 10px;
-      color: #000;
-      font-family: 'Black Han Sans', sans-serif;
-    }
-    .btn-enter:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px var(--accent-glow);
-    }
-    .btn-enter:active { transform: translateY(0); }
-    .btn-enter:disabled { opacity: 0.3; cursor: not-allowed; transform: none; box-shadow: none; }
-
-    .error-msg {
-      display: none;
-      margin-top: 12px;
-      font-size: 0.78rem;
-      color: #ff5c5c;
-      text-align: center;
-    }
-    .error-msg.show { display: block; }
-
-    .loading-row {
+    /* 최근 채널 태그 */
+    .recent-channel {
       display: none;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      margin-top: 12px;
-      font-size: 0.78rem;
-      color: var(--accent);
+      margin-bottom: 14px;
+      flex-wrap: wrap;
     }
-    .loading-row.show { display: flex; }
-    .spinner {
-      width: 14px; height: 14px;
-      border: 2px solid var(--accent-dim);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
+    .recent-channel.show { display: flex; }
+    .recent-label { font-size: 0.66rem; color: var(--muted); letter-spacing: 1px; white-space: nowrap; }
+    .recent-tag {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--accent-dim); border: 1px solid rgba(0,255,163,0.25);
+      border-radius: 20px; padding: 4px 12px;
+      font-size: 0.76rem; color: var(--accent);
+      cursor: pointer; transition: all 0.2s;
+      max-width: 240px;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .recent-tag:hover { background: rgba(0,255,163,0.2); }
+    .recent-tag .tag-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .recent-clear {
+      background: none; border: none; color: var(--muted);
+      font-size: 0.72rem; cursor: pointer; padding: 0 2px;
+      transition: color 0.2s; flex-shrink: 0;
+    }
+    .recent-clear:hover { color: #ff5c5c; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    .input-hint { font-size:0.72rem; color:var(--muted); line-height:1.7; margin-bottom:22px; }
+    .input-hint code { color:var(--accent); background:var(--accent-dim); padding:1px 6px; border-radius:4px; font-size:0.7rem; }
 
-    .footer {
-      font-size: 0.68rem;
-      color: #222;
-      text-align: center;
-      animation: fadeUp 0.7s 0.3s ease both;
+    .btn-enter {
+      width:100%; height:50px; background:var(--accent); border:none;
+      border-radius:10px; color:#000; font-family:'Black Han Sans',sans-serif;
+      font-size:1.05rem; letter-spacing:3px; cursor:pointer;
+      transition:all 0.2s;
     }
+    .btn-enter:hover { transform:translateY(-2px); box-shadow:0 8px 30px var(--accent-glow); }
+    .btn-enter:active { transform:translateY(0); }
+    .btn-enter:disabled { opacity:0.3; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    .error-msg { display:none; margin-top:12px; font-size:0.78rem; color:#ff5c5c; text-align:center; }
+    .error-msg.show { display:block; }
+
+    .loading-row { display:none; align-items:center; justify-content:center; gap:8px; margin-top:12px; font-size:0.78rem; color:var(--accent); }
+    .loading-row.show { display:flex; }
+    .spinner { width:14px; height:14px; border:2px solid var(--accent-dim); border-top-color:var(--accent); border-radius:50%; animation:spin 0.7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    /* footer */
+    .page-footer {
+      position: fixed; bottom: 18px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 16px;
+      animation: fadeUp 0.7s 0.4s ease both;
+      z-index: 10;
+    }
+    .footer-link {
+      font-size: 0.68rem; color: #333;
+      text-decoration: none; cursor: pointer;
+      transition: color 0.2s; border: none; background: none;
+      font-family: 'Pretendard', sans-serif;
+    }
+    .footer-link:hover { color: var(--accent); }
+
+    /* 개인정보처리방침 모달 */
+    .modal-bg {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); z-index: 200;
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal-bg.show { display: flex; }
+    .modal {
+      background: #111; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 32px;
+      max-width: 560px; width: 100%;
+      max-height: 80vh; overflow-y: auto;
+      position: relative;
+    }
+    .modal::-webkit-scrollbar { width: 4px; }
+    .modal::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+    .modal-title {
+      font-family: 'Black Han Sans', sans-serif;
+      font-size: 1.2rem; color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .modal-date { font-size: 0.72rem; color: #555; margin-bottom: 24px; }
+    .modal h3 { font-size: 0.85rem; font-weight: 700; color: #ddd; margin: 20px 0 8px; }
+    .modal p, .modal li { font-size: 0.8rem; color: #888; line-height: 1.8; }
+    .modal ul { padding-left: 16px; }
+    .modal li { margin-bottom: 4px; }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: none; border: none; color: #555;
+      font-size: 1.2rem; cursor: pointer; transition: color 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -295,8 +196,45 @@
 <div class="deco-ring r1"></div>
 <div class="deco-ring r2"></div>
 
-<div class="container">
+<!-- 개인정보처리방침 모달 -->
+<div class="modal-bg" id="privacyModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closePrivacy()">✕</button>
+    <div class="modal-title">개인정보처리방침</div>
+    <div class="modal-date">시행일: 2025년 1월 1일</div>
 
+    <h3>1. 수집하는 정보</h3>
+    <p>치지직 룰렛(이하 "서비스")은 다음 정보를 수집합니다.</p>
+    <ul>
+      <li>치지직 채널 ID (사용자가 직접 입력)</li>
+      <li>공개 채널명 (치지직 공개 API를 통해 조회)</li>
+      <li>브라우저 로컬 스토리지에 저장되는 마지막 조회 채널 ID</li>
+    </ul>
+
+    <h3>2. 정보 이용 목적</h3>
+    <ul>
+      <li>채널 정보 조회 및 룰렛 기능 제공</li>
+      <li>최근 조회 채널 자동완성 편의 기능 제공</li>
+    </ul>
+
+    <h3>3. 정보 보관</h3>
+    <p>채널 ID는 사용자의 브라우저 로컬 스토리지에만 저장되며, 서버에 전송·저장되지 않습니다. 언제든지 브라우저 설정에서 삭제할 수 있습니다.</p>
+
+    <h3>4. 제3자 제공</h3>
+    <p>수집된 정보는 제3자에게 제공되지 않습니다. 단, 채널 조회 시 치지직(NAVER) 공개 API가 사용됩니다.</p>
+
+    <h3>5. 실시간 채팅 데이터</h3>
+    <p>실시간 채팅 및 후원 데이터는 화면에 표시하는 용도로만 사용되며, 서버에 저장되지 않습니다.</p>
+
+    <h3>6. 쿠키 및 추적</h3>
+    <p>본 서비스는 쿠키를 사용하지 않으며, 사용자 행동을 추적하지 않습니다.</p>
+
+    <h3>7. 문의</h3>
+    <p>개인정보 관련 문의는 서비스 운영자에게 연락해 주세요.</p>
+  </div>
+</div>
+
+<div class="container">
   <div class="title-wrap">
     <div class="title-eyebrow">🎰 Chzzk Live Roulette</div>
     <div class="title">
@@ -308,6 +246,16 @@
 
   <div class="card">
     <label class="input-label">Channel ID</label>
+
+    <!-- 최근 채널 -->
+    <div class="recent-channel" id="recentRow">
+      <span class="recent-label">최근</span>
+      <div class="recent-tag" id="recentTag" onclick="useRecent()">
+        <span class="tag-name" id="recentName"></span>
+        <button class="recent-clear" onclick="clearRecent(event)">✕</button>
+      </div>
+    </div>
+
     <input
       class="input-field"
       id="channelInput"
@@ -326,12 +274,39 @@
       채널 확인 중...
     </div>
   </div>
+</div>
 
-  <div class="footer">후원으로 룰렛 칸을 추가하고 당첨을 노려보세요</div>
-
+<!-- 하단 링크 -->
+<div class="page-footer">
+  <button class="footer-link" onclick="openPrivacy()">개인정보처리방침</button>
 </div>
 
 <script>
+  // ── 최근 채널 로드 ──────────────────────
+  function loadRecent() {
+    const saved = localStorage.getItem('chzzk_last_channel');
+    if (!saved) return;
+    try {
+      const { id, name } = JSON.parse(saved);
+      document.getElementById('recentName').textContent = name || id;
+      document.getElementById('recentRow').classList.add('show');
+    } catch(_) {}
+  }
+
+  function useRecent() {
+    try {
+      const { id } = JSON.parse(localStorage.getItem('chzzk_last_channel') || '{}');
+      if (id) { document.getElementById('channelInput').value = id; enter(); }
+    } catch(_) {}
+  }
+
+  function clearRecent(e) {
+    e.stopPropagation();
+    localStorage.removeItem('chzzk_last_channel');
+    document.getElementById('recentRow').classList.remove('show');
+  }
+
+  // ── 입장 ────────────────────────────────
   async function enter() {
     const channelId = document.getElementById('channelInput').value.trim();
     if (!channelId) return showError('채널 ID를 입력해주세요');
@@ -342,13 +317,16 @@
     document.getElementById('loadingRow').classList.add('show');
 
     try {
-      const res = await fetch(`/api/channel/${channelId}`);
+      const res  = await fetch(`/api/channel/${channelId}`);
       const data = await res.json();
-
       if (!data?.content?.channelId) throw new Error('존재하지 않는 채널이에요');
 
-      const name = encodeURIComponent(data.content.channelName || '');
-      window.location.href = `/roulette.html?channelId=${channelId}&channelName=${name}`;
+      const channelName = data.content.channelName || '';
+
+      // 채널 ID + 이름 저장
+      localStorage.setItem('chzzk_last_channel', JSON.stringify({ id: channelId, name: channelName }));
+
+      window.location.href = `/roulette.html?channelId=${channelId}&channelName=${encodeURIComponent(channelName)}`;
     } catch (e) {
       showError(e.message || '채널을 찾을 수 없어요');
       btn.disabled = false;
@@ -362,9 +340,19 @@
     el.classList.add('show');
   }
 
+  // ── 개인정보처리방침 ─────────────────────
+  function openPrivacy()  { document.getElementById('privacyModal').classList.add('show'); }
+  function closePrivacy() { document.getElementById('privacyModal').classList.remove('show'); }
+  document.getElementById('privacyModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('privacyModal')) closePrivacy();
+  });
+
+  // ── 이벤트 ──────────────────────────────
   document.getElementById('channelInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') enter();
   });
+
+  loadRecent();
 </script>
 </body>
 </html>
