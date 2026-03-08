@@ -4,8 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>치지직 룰렛</title>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet"/>
   <style>
+    /* ── 주폰트: Pretendard (100~700) ── */
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2'); font-weight:100; font-display:swap; }
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2'); font-weight:200; font-display:swap; }
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
@@ -13,8 +13,16 @@
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
     @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
-    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
-    @font-face { font-family:'Pretendard'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
+    /* ── 보조폰트: A2z (100~900) ── */
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-1Thin.woff2') format('woff2'); font-weight:100; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-2ExtraLight.woff2') format('woff2'); font-weight:200; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-3Light.woff2') format('woff2'); font-weight:300; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-4Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-6SemiBold.woff2') format('woff2'); font-weight:600; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-7Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-8ExtraBold.woff2') format('woff2'); font-weight:800; font-display:swap; }
+    @font-face { font-family:'A2z'; src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-9Black.woff2') format('woff2'); font-weight:900; font-display:swap; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -61,7 +69,7 @@
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3;
     }
-    .brand { font-family:'Black Han Sans',sans-serif; font-size:1.05rem; color:var(--accent); letter-spacing:1px; }
+    .brand { font-family:'A2z',sans-serif; font-size:1.05rem; color:var(--accent); letter-spacing:1px; }
     .channel-badge {
       display:flex; align-items:center; gap:6px;
       background:var(--accent-dim); border:1px solid var(--accent-border);
@@ -243,7 +251,7 @@
       transform:translate(-50%,-50%);
       width:68px; height:68px; border-radius:50%;
       background:var(--bg); border:2px solid var(--accent); color:var(--accent);
-      font-family:'Black Han Sans',sans-serif; font-size:0.82rem; letter-spacing:1px;
+      font-family:'A2z',sans-serif; font-size:0.82rem; letter-spacing:1px;
       cursor:pointer; z-index:10; transition:all 0.2s;
       box-shadow:0 0 16px var(--accent-glow);
     }
@@ -252,7 +260,7 @@
 
     .result-box { min-height:52px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
     .result-label { font-size:0.62rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted2); }
-    .result-name { font-family:'Black Han Sans',sans-serif; font-size:1.7rem; color:var(--accent); text-shadow:0 0 20px var(--accent-glow); animation:pop 0.4s ease; }
+    .result-name { font-family:'A2z',sans-serif; font-size:1.7rem; color:var(--accent); text-shadow:0 0 20px var(--accent-glow); animation:pop 0.4s ease; }
     @keyframes pop { from{transform:scale(0.6);opacity:0} to{transform:scale(1);opacity:1} }
 
     .ctrl-row { display:flex; gap:8px; }
@@ -279,7 +287,7 @@
     .winner-emoji { font-size:5rem; animation:wbounce 0.7s ease infinite alternate; }
     @keyframes wbounce { from{transform:scale(1) rotate(-5deg)} to{transform:scale(1.1) rotate(5deg)} }
     .winner-label { font-size:0.72rem; letter-spacing:5px; color:var(--muted2); text-transform:uppercase; }
-    .winner-name { font-family:'Black Han Sans',sans-serif; font-size:clamp(2.2rem,8vw,4.5rem); color:var(--accent); text-shadow:0 0 40px var(--accent-glow); text-align:center; padding:0 24px; }
+    .winner-name { font-family:'A2z',sans-serif; font-size:clamp(2.2rem,8vw,4.5rem); color:var(--accent); text-shadow:0 0 40px var(--accent-glow); text-align:center; padding:0 24px; }
     .winner-ring { position:absolute; width:300px; height:300px; border-radius:50%; border:1px solid var(--accent-border); animation:ringPulse 1.5s ease-in-out infinite; }
     @keyframes ringPulse { 0%{transform:scale(0.8);opacity:0.5} 100%{transform:scale(1.5);opacity:0} }
     .btn-close { margin-top:8px; height:42px; padding:0 28px; background:transparent; border:1px solid var(--accent-border); border-radius:10px; color:var(--accent); font-size:0.85rem; cursor:pointer; transition:all 0.2s; font-family:'Pretendard',sans-serif; }
@@ -295,7 +303,7 @@
     .modal { background:#111; border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:32px; max-width:560px; width:100%; max-height:80vh; overflow-y:auto; position:relative; }
     .modal::-webkit-scrollbar { width:4px; }
     .modal::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
-    .modal-title { font-family:'Black Han Sans',sans-serif; font-size:1.2rem; color:var(--accent); margin-bottom:6px; }
+    .modal-title { font-family:'A2z',sans-serif; font-size:1.2rem; color:var(--accent); margin-bottom:6px; }
     .modal-date  { font-size:0.72rem; color:#555; margin-bottom:24px; }
     .modal h3    { font-size:0.85rem; font-weight:700; color:#ddd; margin:20px 0 8px; }
     .modal p, .modal li { font-size:0.8rem; color:#888; line-height:1.8; }
@@ -637,7 +645,10 @@ function showResult() {
   document.getElementById('winnerOverlay').classList.add('show');
 }
 
-function closeWinner() { document.getElementById('winnerOverlay').classList.remove('show'); }
+function closeWinner() {
+  document.getElementById('winnerOverlay').classList.remove('show');
+  document.getElementById('resultBox').innerHTML = '';
+}
 
 // ══════════════════════════════════════
 // WebSocket
@@ -702,6 +713,9 @@ function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+document.getElementById('winnerOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('winnerOverlay')) closeWinner();
+});
 document.getElementById('newSlotInput').addEventListener('keydown', e=>{ if(e.key==='Enter') addSlot(); });
 window.addEventListener('resize', ()=>drawWheel());
 renderSlots();
