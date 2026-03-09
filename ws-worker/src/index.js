@@ -156,15 +156,22 @@ export default {
       }
   
       // 후원(치즈) (cmd: 93102)
-      if (data.cmd === 93102) {
-        this.broadcast({
-          type: 'donation',
-          user: data.bdy?.profile?.nickname || '익명',
-          amount: data.bdy?.payAmount || 0,
-          message: data.bdy?.msg || '',
-          time: new Date().toISOString(),
-        });
-      }
+    if (data.cmd === 93102) {
+      // bdy 가 배열인 경우 대응
+    const bdy = Array.isArray(data.bdy) ? data.bdy[0] : data.bdy;
+  this.broadcast({
+    type: 'donation',
+    user: bdy?.profile?.nickname || '익명',
+    amount: bdy?.payAmount || 0,
+    message: bdy?.msg || '',
+    time: new Date().toISOString(),
+  });
+  // 디버그용 raw 데이터 전송
+  this.broadcast({
+    type: 'debug',
+    raw: JSON.stringify(data.bdy),
+  });
+}
   
       // 구독 (cmd: 94008)
       if (data.cmd === 94008) {
