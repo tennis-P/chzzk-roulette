@@ -695,13 +695,27 @@ function closeWinner() {
 // WebSocket
 // ══════════════════════════════════════
 function connectWS() {
+  console.log('[WS] 연결 시도:', WS_URL);
   ws = new WebSocket(`${WS_URL}?channelId=${CHANNEL_ID}`);
+
+  ws.onopen = () => {
+    console.log('[WS] 연결 성공!');
+    showToast('채팅 서버 연결됨');
+  };
+  ws.onerror = (e) => {
+    console.error('[WS] 연결 오류:', e);
+  };
+  ws.onclose = (e) => {
+    console.warn('[WS] 연결 끊김. code:', e.code, 'reason:', e.reason);
+  };
   ws.onmessage = e => {
     try {
       const d = JSON.parse(e.data);
+      console.log('[WS] 메시지 수신:', d);
       if      (d.type==='chat')         handleChat(d);
       else if (d.type==='donation')     handleDonation(d);
       else if (d.type==='subscription') handleSub(d);
+      else if (d.type==='debug')        console.log('[WS] DEBUG raw bdy:', d.raw);
     } catch(_){}
   };
 }
