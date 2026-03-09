@@ -306,6 +306,38 @@
     .toast.show { opacity:1; }
 
 
+
+    /* ── 치즈 빠른 버튼 ── */
+    .cheese-block { margin-bottom: 0; }
+    .cheese-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+    .cheese-btns {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 10px 12px;
+      background: var(--surf3);
+      border: 1px solid var(--accent-border);
+      border-radius: 8px;
+    }
+    .cheese-btn {
+      flex: 1; min-width: calc(33% - 4px);
+      height: 34px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 7px;
+      color: var(--accent);
+      font-family: 'Aggravo', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      letter-spacing: 0.5px;
+    }
+    .cheese-btn:hover {
+      background: rgba(0,255,163,0.22);
+      box-shadow: 0 0 10px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .cheese-btn:active { transform: translateY(0); }
+
     /* ── 줌 컨트롤 ── */
     .zoom-wrap { display:flex; align-items:center; gap:8px; }
     .zoom-label { font-size:0.68rem; color:var(--muted2); white-space:nowrap; min-width:36px; text-align:right; font-family:'Pretendard',sans-serif; }
@@ -426,13 +458,27 @@
           <div><div class="row-label">자동 추가</div><div class="row-sub">후원 시 룰렛 칸 자동 추가</div></div>
           <button class="toggle on" id="autoToggle" onclick="toggleAuto()"></button>
         </div>
-        <div class="row">
-          <div><div class="row-label">칸당 치즈</div><div class="row-sub">이 금액당 1칸 추가</div></div>
-          <input class="num-input" id="cheesePerSlot" type="number" value="100" min="1"/>
+
+        <div class="cheese-block">
+          <div class="cheese-top">
+            <div>
+              <div class="row-label">칸당 치즈</div>
+              <div class="row-sub">이 금액당 1칸 추가</div>
+            </div>
+            <input class="num-input" id="cheesePerSlot" type="number" value="1000" min="1"/>
+          </div>
+          <div class="cheese-btns">
+            <button class="cheese-btn" onclick="addCheese(500)">+500</button>
+            <button class="cheese-btn" onclick="addCheese(1000)">+1000</button>
+            <button class="cheese-btn" onclick="addCheese(5000)">+5000</button>
+            <button class="cheese-btn" onclick="addCheese(10000)">+1만</button>
+            <button class="cheese-btn" onclick="addCheese(50000)">+5만</button>
+          </div>
         </div>
-        <div class="row">
-          <div><div class="row-label">최대 칸 수</div><div class="row-sub">시청자당 최대 칸</div></div>
-          <input class="num-input" id="maxSlots" type="number" value="10" min="1"/>
+
+        <div class="row" style="margin-top:10px">
+          <div><div class="row-label">최대 항목 수</div><div class="row-sub">룰렛 항목 최대 개수</div></div>
+          <input class="num-input" id="maxSlots" type="number" value="20" min="1"/>
         </div>
       </div>
 
@@ -527,6 +573,12 @@ window.onload = () => {
 // ══════════════════════════════════════
 // 토글
 // ══════════════════════════════════════
+
+function addCheese(val) {
+  const el  = document.getElementById('cheesePerSlot');
+  el.value  = Math.max(1, (parseInt(el.value) || 0) + val);
+}
+
 function toggleAuto() { autoAdd = !autoAdd; document.getElementById('autoToggle').classList.toggle('on', autoAdd); }
 function toggleCmd()  { cmdActive = !cmdActive; document.getElementById('cmdToggle').classList.toggle('on', cmdActive); }
 function updatePreview() {
@@ -543,11 +595,15 @@ function addSlot(name, count = 1) {
   const n  = name || el?.value?.trim();
   if (!n) return;
 
-  const max = parseInt(document.getElementById('maxSlots').value) || 10;
-  const ex  = slots.find(s => s.name === n);
+  const maxItems = parseInt(document.getElementById('maxSlots').value) || 20;
+  const ex = slots.find(s => s.name === n);
   if (ex) {
-    ex.entries = Math.min(ex.entries + count, max);
+    ex.entries = ex.entries + count;
   } else {
+    if (slots.length >= maxItems) {
+      showToast(`최대 항목 수(${maxItems}개)에 도달했어요`);
+      return;
+    }
     slots.push({ name: n, color: COLORS[slots.length % COLORS.length], entries: count });
   }
   if (el) el.value = '';
@@ -555,7 +611,6 @@ function addSlot(name, count = 1) {
 }
 
 function changeEntries(i, delta) {
-  const max = parseInt(document.getElementById('maxSlots').value) || 10;
   const next = slots[i].entries + delta;
   if (next < 1) { slots.splice(i, 1); }
   else { slots[i].entries = Math.min(max, next); }
