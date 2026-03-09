@@ -70,8 +70,13 @@ export default {
         const liveJson = await liveRes.json();
         const chatChannelId = liveJson?.content?.chatChannelId;
   
-        // 디버그용
-this.broadcast({ type: 'debug', raw: JSON.stringify(liveJson?.content) });
+        // 디버그용 - 전체 응답 확인
+this.broadcast({ type: 'debug', raw: JSON.stringify({
+  status: liveRes.status,
+  json: liveJson
+}) });
+
+const chatChannelId = liveJson?.content?.chatChannelId;
 
 if (!chatChannelId) {
   this.broadcast({ type: 'error', message: '현재 방송 중인 채널이 아닙니다' });
