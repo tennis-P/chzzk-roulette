@@ -339,6 +339,60 @@
     .cheese-btn:active { transform: translateY(0); }
 
 
+
+    /* ── 디스코드 문의 버튼 ── */
+    .discord-btn {
+      margin-top: 14px;
+      width: 100%; height: 42px;
+      background: #5865F2;
+      border: none; border-radius: 9px;
+      color: #fff; font-family: 'Aggravo', sans-serif;
+      font-weight: 700; font-size: 0.88rem;
+      cursor: pointer; transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .discord-btn:hover { background: #4752c4; box-shadow: 0 4px 16px rgba(88,101,242,0.4); transform: translateY(-1px); }
+    .discord-btn:active { transform: translateY(0); }
+
+    /* ── 디스코드 이동 확인 토스트 ── */
+    .discord-confirm {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88); z-index: 400;
+      align-items: center; justify-content: center;
+    }
+    .discord-confirm.show { display: flex; }
+    .discord-box {
+      background: #111; border: 1px solid rgba(88,101,242,0.4);
+      border-radius: 14px; padding: 28px 32px;
+      text-align: center; max-width: 340px; width: 100%;
+    }
+    .discord-icon { font-size: 2rem; margin-bottom: 10px; }
+    .discord-msg  { font-size: 0.88rem; color: #ccc; line-height: 1.7; margin-bottom: 20px; }
+    .discord-msg strong { color: #5865F2; }
+    .discord-actions { display: flex; gap: 10px; justify-content: center; }
+    .discord-go  { height: 38px; padding: 0 24px; background: #5865F2; border: none; border-radius: 8px; color: #fff; font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all 0.15s; font-family: 'Pretendard', sans-serif; }
+    .discord-go:hover { background: #4752c4; }
+    .discord-cancel { height: 38px; padding: 0 20px; background: transparent; border: 1px solid #333; border-radius: 8px; color: #666; font-size: 0.82rem; cursor: pointer; transition: all 0.15s; font-family: 'Pretendard', sans-serif; }
+    .discord-cancel:hover { border-color: #555; color: #999; }
+
+    /* ── 왼쪽 패널 푸터 ── */
+    .panel-footer {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+      background: var(--surf1);
+      flex-shrink: 0;
+    }
+    .panel-footer-copy {
+      font-size: 0.64rem; color: #333; line-height: 1.7;
+    }
+    .panel-footer-copy a {
+      color: #444; text-decoration: none; transition: color 0.2s;
+    }
+    .panel-footer-copy a:hover { color: var(--accent); }
+    .panel-footer-notice {
+      font-size: 0.6rem; color: #2a2a2a; margin-top: 4px; line-height: 1.6;
+    }
+
     /* ── 방송 상태 dot ── */
     .live-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -416,6 +470,18 @@
 <!-- 토스트 -->
 <div class="toast" id="toast"></div>
 
+<!-- 디스코드 이동 확인 -->
+<div class="discord-confirm" id="discordConfirm">
+  <div class="discord-box">
+    <div class="discord-icon">💬</div>
+    <div class="discord-msg">문의 디스코드 페이지로 이동합니다.<br/><strong>discord.gg/vRgC8fnUAf</strong></div>
+    <div class="discord-actions">
+      <button class="discord-cancel" onclick="closeDiscord()">취소</button>
+      <button class="discord-go" onclick="confirmDiscord()">이동하기</button>
+    </div>
+  </div>
+</div>
+
 <!-- 개인정보처리방침 모달 -->
 <div class="modal-bg" id="privacyModal">
   <div class="modal">
@@ -447,7 +513,8 @@
     <h3>6. 쿠키 및 추적</h3>
     <p>본 서비스는 쿠키를 사용하지 않으며, 사용자 행동을 추적하지 않습니다.</p>
     <h3>7. 문의</h3>
-    <p>개인정보 관련 문의는 서비스 운영자에게 연락해 주세요.</p>
+    <p>개인정보 관련 문의는 아래 디스코드 채널을 통해 연락해 주세요.</p>
+    <button class="discord-btn" onclick="goDiscord()">디스코드로 문의하기</button>
   </div>
 </div>
 
@@ -533,6 +600,16 @@
         </div>
       </div>
 
+    </div>
+    <!-- 패널 하단 저작권 -->
+    <div class="panel-footer">
+      <div class="panel-footer-copy">
+        <a href="https://github.com/tennis-P" target="_blank">© tennis-P</a>
+      </div>
+      <div class="panel-footer-notice">
+        치지직 룰렛은 치지직의 써드파티 사이트로, 치지직에서 운영하는 사이트가 아닙니다.<br/>
+        "치지직"은 NAVER Corp.의 등록 상표입니다.
+      </div>
     </div>
   </div>
 
@@ -841,6 +918,24 @@ function handleSub(d) {
   const item = (d.message||'').trim();
   if(autoAdd && item){ addSlot(item,1); showToast(`🌟 구독 → "${item}" +1칸 추가!`); }
 }
+
+
+// ══════════════════════════════════════
+// 디스코드 문의
+// ══════════════════════════════════════
+function goDiscord() {
+  document.getElementById('discordConfirm').classList.add('show');
+}
+function closeDiscord() {
+  document.getElementById('discordConfirm').classList.remove('show');
+}
+function confirmDiscord() {
+  closeDiscord();
+  window.open('https://discord.gg/vRgC8fnUAf', '_blank');
+}
+document.getElementById('discordConfirm').addEventListener('click', e => {
+  if (e.target === document.getElementById('discordConfirm')) closeDiscord();
+});
 
 // ══════════════════════════════════════
 // 토스트 & 모달
