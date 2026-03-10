@@ -377,22 +377,21 @@
 
     /* ── 왼쪽 패널 푸터 ── */
     .panel-footer {
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-top: 1px solid var(--border);
       background: var(--surf1);
       flex-shrink: 0;
     }
     .panel-footer-copy {
-      font-size: 0.64rem; color: #ccc; line-height: 1.6;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-size: 0.75rem; color: #ccc; line-height: 1.8;
     }
     .panel-footer-copy a {
       color: #fff; text-decoration: none; transition: color 0.2s; font-weight: 600;
     }
     .panel-footer-copy a:hover { color: var(--accent); }
     .panel-footer-notice {
-      font-size: 0.58rem; color: #aaa; line-height: 1.6;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-size: 0.68rem; color: #aaa; line-height: 1.7;
+      word-break: keep-all;
     }
 
     /* ── 방송 상태 dot ── */
@@ -440,7 +439,6 @@
     #zoomWrapper {
       flex:1; display:flex; flex-direction:column;
       transform-origin:top left; transition:transform 0.1s ease;
-      overflow:hidden;
     }
     /* 개인정보처리방침 모달 */
     .modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:300; align-items:center; justify-content:center; padding:20px; }
@@ -608,7 +606,8 @@
       <div class="panel-footer-copy">
         <a href="https://github.com/tennis-P" target="_blank">© tennis-P</a>
       </div>
-      <div class="panel-footer-notice">치지직 룰렛은 치지직의 써드파티 사이트로, 치지직에서 운영하는 사이트가 아닙니다. &nbsp;·&nbsp; "치지직"은 NAVER Corp.의 등록 상표입니다.</div>
+      <div class="panel-footer-notice">치지직 룰렛은 치지직의 써드파티 사이트로, 치지직에서 운영하는 사이트가 아닙니다.</div>
+      <div class="panel-footer-notice">"치지직"은 NAVER Corp.의 등록 상표입니다.</div>
     </div>
   </div>
 
