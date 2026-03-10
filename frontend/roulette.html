@@ -102,9 +102,6 @@
 
     /* ── 레이아웃 ── */
     main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 340px 1fr;
       overflow: hidden;
       position: relative; z-index: 1;
     }
@@ -437,8 +434,15 @@
     }
     .zoom-reset:hover { border-color:var(--accent-border); color:var(--accent); }
     #zoomWrapper {
-      flex:1; display:flex; flex-direction:column;
-      transform-origin:top left; transition:transform 0.1s ease;
+      flex:1;
+      overflow:hidden;
+      transform-origin:top left;
+      transition:transform 0.1s ease;
+    }
+    #zoomWrapper > main {
+      width:100%; height:100%;
+      display:grid;
+      grid-template-columns:340px 1fr;
     }
     /* 개인정보처리방침 모달 */
     .modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:300; align-items:center; justify-content:center; padding:20px; }
@@ -960,13 +964,13 @@ function applyZoom(val) {
   val = Math.min(150, Math.max(80, parseInt(val)));
   const wrapper = document.getElementById('zoomWrapper');
   const scale   = val / 100;
-  wrapper.style.transform      = `scale(${scale})`;
+  // scale 적용 + 역방향으로 크기 보정해서 화면 밖으로 안 나가게
   wrapper.style.transformOrigin = 'top left';
-  wrapper.style.width           = `${100 / scale}%`;
-  wrapper.style.height          = `${100 / scale}%`;
+  wrapper.style.transform       = `scale(${scale})`;
+  wrapper.style.width           = `${(1 / scale) * 100}%`;
+  wrapper.style.height          = `${(1 / scale) * 100}%`;
   document.getElementById('zoomSlider').value = val;
   document.getElementById('zoomLabel').textContent = val + '%';
-  // 룰렛 캔버스 리사이즈
   setTimeout(() => drawWheel(), 50);
 }
 
