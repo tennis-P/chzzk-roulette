@@ -105,7 +105,7 @@
       overflow: hidden;
       position: relative; z-index: 1;
     }
-    .panel { display:flex; flex-direction:column; border-right:1px solid var(--border); overflow:hidden; }
+    .panel { display:flex; flex-direction:column; border-right:1px solid var(--border); overflow:hidden; min-width:0; }
     .panel:last-child { border-right:none; }
     .panel-header {
       height:38px; min-height:38px;
@@ -434,10 +434,15 @@
     }
     .zoom-reset:hover { border-color:var(--accent-border); color:var(--accent); }
     #zoomWrapper {
-      flex:1;
-      overflow:hidden;
-      transform-origin:top left;
-      transition:transform 0.1s ease;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    #zoomInner {
+      position: absolute;
+      top: 0; left: 0;
+      transform-origin: top left;
+      transition: transform 0.1s ease;
     }
     #zoomWrapper > main {
       width:100%; height:100%;
@@ -539,7 +544,7 @@
   </div>
 </header>
 
-<div id="zoomWrapper"><main>
+<div id="zoomWrapper"><div id="zoomInner"><main>
 
   <!-- 왼쪽: 설정 -->
   <div class="panel">
@@ -636,7 +641,7 @@
   </div>
 
 </main>
-</div>
+</div></div>
 
 <script>
 
@@ -962,13 +967,12 @@ document.getElementById('privacyModal').addEventListener('click', e=>{
 // ══════════════════════════════════════
 function applyZoom(val) {
   val = Math.min(150, Math.max(80, parseInt(val)));
+  const scale  = val / 100;
+  const inner  = document.getElementById('zoomInner');
   const wrapper = document.getElementById('zoomWrapper');
-  const scale   = val / 100;
-  // scale 적용 + 역방향으로 크기 보정해서 화면 밖으로 안 나가게
-  wrapper.style.transformOrigin = 'top left';
-  wrapper.style.transform       = `scale(${scale})`;
-  wrapper.style.width           = `${(1 / scale) * 100}%`;
-  wrapper.style.height          = `${(1 / scale) * 100}%`;
+  inner.style.transform = `scale(${scale})`;
+  inner.style.width     = `${(1 / scale) * 100}%`;
+  inner.style.height    = `${(1 / scale) * 100}%`;
   document.getElementById('zoomSlider').value = val;
   document.getElementById('zoomLabel').textContent = val + '%';
   setTimeout(() => drawWheel(), 50);
