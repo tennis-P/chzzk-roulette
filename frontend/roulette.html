@@ -338,6 +338,27 @@
     }
     .cheese-btn:active { transform: translateY(0); }
 
+
+    /* ── 방송 상태 dot ── */
+    .live-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #444; flex-shrink: 0;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    .live-dot.live {
+      background: #00e676;
+      box-shadow: 0 0 6px rgba(0,230,118,0.8);
+      animation: livePulse 1.8s ease-in-out infinite;
+    }
+    .live-dot.offline {
+      background: #ff4d4d;
+      box-shadow: 0 0 4px rgba(255,77,77,0.5);
+    }
+    @keyframes livePulse {
+      0%, 100% { box-shadow: 0 0 4px rgba(0,230,118,0.6); }
+      50%       { box-shadow: 0 0 10px rgba(0,230,118,1); }
+    }
+
     /* ── 줌 컨트롤 ── */
     .zoom-wrap { display:flex; align-items:center; gap:8px; }
     .zoom-label { font-size:0.68rem; color:var(--muted2); white-space:nowrap; min-width:36px; text-align:right; font-family:'Pretendard',sans-serif; }
@@ -433,7 +454,10 @@
 <!-- 헤더 -->
 <header>
   <div class="brand">치지직 룰렛</div>
-  <div class="channel-badge" onclick="location.href='/'" title="채널 변경" style="cursor:pointer"><span id="channelBadge">로딩 중...</span></div>
+  <div class="channel-badge" onclick="location.href='/'" title="채널 변경 (클릭)">
+    <span class="live-dot" id="liveDot"></span>
+    <span id="channelBadge">로딩 중...</span>
+  </div>
   <div class="header-right">
     <div class="zoom-wrap">
       <input class="zoom-slider" id="zoomSlider" type="range" min="80" max="150" value="100" step="1" oninput="applyZoom(this.value)"/>
@@ -536,6 +560,24 @@
 </div>
 
 <script>
+
+// ══════════════════════════════════════
+// 방송 상태 확인
+// ══════════════════════════════════════
+async function checkLiveStatus() {
+  if (!CHANNEL_ID) return;
+  try {
+    const res  = await fetch(`/api/live/${CHANNEL_ID}`);
+    const data = await res.json();
+    const isLive = data?.content?.status === 'OPEN';
+    const dot  = document.getElementById('liveDot');
+    dot.classList.remove('live','offline');
+    dot.classList.add(isLive ? 'live' : 'offline');
+  } catch(_) {
+    document.getElementById('liveDot').classList.add('offline');
+  }
+}
+
 // ══════════════════════════════════════
 // 설정
 // ══════════════════════════════════════
@@ -568,6 +610,8 @@ window.onload = () => {
   renderSlots();
   drawWheel();
   connectWS();
+  checkLiveStatus();
+  setInterval(checkLiveStatus, 60000);
 };
 
 // ══════════════════════════════════════
