@@ -887,7 +887,6 @@ function connectWS() {
 
   ws.onopen = () => {
     console.log('[WS] 연결 성공!');
-    showToast('채팅 서버 연결됨');
   };
   ws.onerror = (e) => {
     console.error('[WS] 연결 오류:', e);
