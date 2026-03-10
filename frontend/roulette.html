@@ -377,20 +377,22 @@
 
     /* ── 왼쪽 패널 푸터 ── */
     .panel-footer {
-      padding: 12px 14px;
+      padding: 10px 14px;
       border-top: 1px solid var(--border);
       background: var(--surf1);
       flex-shrink: 0;
     }
     .panel-footer-copy {
-      font-size: 0.64rem; color: #ccc; line-height: 1.7;
+      font-size: 0.64rem; color: #ccc; line-height: 1.6;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     .panel-footer-copy a {
       color: #fff; text-decoration: none; transition: color 0.2s; font-weight: 600;
     }
     .panel-footer-copy a:hover { color: var(--accent); }
     .panel-footer-notice {
-      font-size: 0.6rem; color: #aaa; margin-top: 4px; line-height: 1.7;
+      font-size: 0.58rem; color: #aaa; line-height: 1.6;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
     /* ── 방송 상태 dot ── */
@@ -606,8 +608,7 @@
       <div class="panel-footer-copy">
         <a href="https://github.com/tennis-P" target="_blank">© tennis-P</a>
       </div>
-      <div class="panel-footer-notice">치지직 룰렛은 치지직의 써드파티 사이트로, 치지직에서 운영하는 사이트가 아닙니다.</div>
-      <div class="panel-footer-notice">"치지직"은 NAVER Corp.의 등록 상표입니다.</div>
+      <div class="panel-footer-notice">치지직 룰렛은 치지직의 써드파티 사이트로, 치지직에서 운영하는 사이트가 아닙니다. &nbsp;·&nbsp; "치지직"은 NAVER Corp.의 등록 상표입니다.</div>
     </div>
   </div>
 
@@ -960,9 +961,10 @@ function applyZoom(val) {
   val = Math.min(150, Math.max(80, parseInt(val)));
   const wrapper = document.getElementById('zoomWrapper');
   const scale   = val / 100;
-  wrapper.style.transform = `scale(${scale})`;
-  wrapper.style.width      = `${100 / scale}%`;
-  wrapper.style.height     = `${100 / scale}%`;
+  wrapper.style.transform      = `scale(${scale})`;
+  wrapper.style.transformOrigin = 'top left';
+  wrapper.style.width           = `${100 / scale}%`;
+  wrapper.style.height          = `${100 / scale}%`;
   document.getElementById('zoomSlider').value = val;
   document.getElementById('zoomLabel').textContent = val + '%';
   // 룰렛 캔버스 리사이즈
