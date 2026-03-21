@@ -49,7 +49,7 @@ export class ChatRoom {
     this.isConnecting = true;
     try {
       const liveRes = await fetch(
-        `https://api.chzzk.naver.com/service/v1/channels/${channelId}/live-detail`,
+        `https://api.chzzk.naver.com/polling/v2/channels/${channelId}/live-status`,
         {
           headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
