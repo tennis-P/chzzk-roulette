@@ -58,13 +58,6 @@ export class ChatRoom {
         }
       );
       const liveJson = await liveRes.json();
-
-      // 디버그용 - 전체 응답 확인
-      this.broadcast({ type: 'debug', raw: JSON.stringify({
-        status: liveRes.status,
-        json: liveJson
-      })});
-
       const chatChannelId = liveJson?.content?.chatChannelId;
 
       if (!chatChannelId) {
@@ -125,7 +118,6 @@ export class ChatRoom {
   }
 
   handleMessage(data) {
-    // 일반 채팅 (cmd: 93101)
     if (data.cmd === 93101) {
       const messages = data.bdy?.messageList || [];
       for (const msg of messages) {
@@ -140,7 +132,6 @@ export class ChatRoom {
       }
     }
 
-    // 후원(치즈) (cmd: 93102)
     if (data.cmd === 93102) {
       const bdy = Array.isArray(data.bdy) ? data.bdy[0] : data.bdy;
       this.broadcast({
@@ -150,10 +141,8 @@ export class ChatRoom {
         message: bdy?.msg || '',
         time: new Date().toISOString(),
       });
-      this.broadcast({ type: 'debug', raw: JSON.stringify(data.bdy) });
     }
 
-    // 구독 (cmd: 94008)
     if (data.cmd === 94008) {
       const bdy = Array.isArray(data.bdy) ? data.bdy[0] : data.bdy;
       this.broadcast({
