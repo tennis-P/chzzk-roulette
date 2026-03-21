@@ -102,7 +102,11 @@
 
     /* ── 레이아웃 ── */
     main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 340px 1fr auto;
       overflow: hidden;
+      min-height: 0;
       position: relative; z-index: 1;
     }
     .panel { display:flex; flex-direction:column; border-right:1px solid var(--border); overflow:hidden; min-width:0; }
@@ -391,7 +395,6 @@
       word-break: keep-all;
     }
 
-<<<<<<< HEAD
 
     /* ── 채팅 패널 ── */
     .chat-panel {
@@ -463,8 +466,6 @@
     .chat-toggle-btn .ct-dot.live { background: #00e676; box-shadow: 0 0 5px rgba(0,230,118,0.8); }
     .chat-toggle-btn .ct-dot.offline { background: #ff4d4d; }
 
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
     /* ── 방송 상태 dot ── */
     .live-dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -511,6 +512,7 @@
       flex: 1;
       overflow: hidden;
       position: relative;
+      min-height: 0;
     }
     #zoomInner {
       width: 100%;
@@ -519,17 +521,6 @@
       flex-direction: column;
       transform-origin: top left;
       transition: transform 0.1s ease;
-    }
-    #zoomInner > main {
-      flex: 1;
-      display: grid;
-<<<<<<< HEAD
-      grid-template-columns: 340px 1fr auto;
-=======
-      grid-template-columns: 340px 1fr;
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
-      overflow: hidden;
-      min-height: 0;
     }
     /* 개인정보처리방침 모달 */
     .modal-bg { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:300; align-items:center; justify-content:center; padding:20px; }
@@ -622,12 +613,9 @@
       <span class="zoom-label" id="zoomLabel">100%</span>
       <button class="zoom-reset" onclick="applyZoom(100)">초기화</button>
     </div>
-<<<<<<< HEAD
     <button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChat()">
       <span class="ct-dot" id="ctDot"></span>채팅
     </button>
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
     <button class="privacy-btn" onclick="openPrivacy()">개인정보처리방침</button>
   </div>
 </header>
@@ -703,12 +691,7 @@
       <div class="panel-footer-copy">
         <a href="https://github.com/tennis-P" target="_blank">© tennis-P</a>
       </div>
-<<<<<<< HEAD
       <div class="panel-footer-notice">치지직 룰렛은 치지직의 써드파티 사이트로, 치지직에서 운영하는 사이트가 아닙니다.</div>
-=======
-      <div class="panel-footer-notice">치지직 룰렛은 치지직의 써드파티 사이트로,</div>
-        <div class="panel-footer-notice">치지직에서 운영하는 사이트가 아닙니다.</div>
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
       <div class="panel-footer-notice">"치지직"은 NAVER Corp.의 등록 상표입니다.</div>
     </div>
   </div>
@@ -717,11 +700,7 @@
   <div class="panel">
     <div class="panel-header">
       <span class="panel-title">룰렛</span>
-<<<<<<< HEAD
       <span id="totalCount" style="font-size:0.66rem;color:var(--muted2)">0칸</span>
-=======
-      <span id="totalCount" style="font-size:0.56rem;color:var(--muted2)">0칸</span>
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
     </div>
     <div class="roulette-center">
       <div class="roulette-wrap">
@@ -737,7 +716,6 @@
     </div>
   </div>
 
-<<<<<<< HEAD
 
   <!-- 채팅 패널 -->
   <div class="chat-panel" id="chatPanel">
@@ -748,8 +726,6 @@
     <div class="chat-list" id="chatList"></div>
   </div>
 
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
 </main>
 </div></div>
 
@@ -993,20 +969,14 @@ function connectWS() {
 
   ws.onopen = () => {
     console.log('[WS] 연결 성공!');
-<<<<<<< HEAD
     setChatDot('live');
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
   };
   ws.onerror = (e) => {
     console.error('[WS] 연결 오류:', e);
   };
   ws.onclose = (e) => {
     console.warn('[WS] 연결 끊김. code:', e.code, 'reason:', e.reason);
-<<<<<<< HEAD
     setChatDot('offline');
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
   };
   ws.onmessage = e => {
     try {
@@ -1021,12 +991,9 @@ function connectWS() {
 }
 
 function handleChat(d) {
-<<<<<<< HEAD
   // 채팅 패널에 표시 (모든 채팅)
   addChatItem('chat', d.user, d.message);
 
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
   if(!cmdActive) return;
   const kw  = document.getElementById('cmdKeyword').value.trim() || '!룰렛추가';
   const msg = (d.message||'').trim();
@@ -1041,24 +1008,17 @@ function handleDonation(d) {
   const cheese = parseInt(document.getElementById('cheesePerSlot').value)||100;
   const add    = Math.max(1, Math.floor((d.amount||0)/cheese));
   const item   = (d.message||'').trim();
-<<<<<<< HEAD
   addChatItem('donation', d.user, item || '(메시지 없음)', d.amount);
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
   if(autoAdd && item){ addSlot(item, add); showToast(`🎁 ${(d.amount||0).toLocaleString()}치즈 → "${item}" +${add}칸 추가!`); }
 }
 
 function handleSub(d) {
   const item = (d.message||'').trim();
-<<<<<<< HEAD
   addChatItem('sub', d.user, item || '구독');
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
   if(autoAdd && item){ addSlot(item,1); showToast(`🌟 구독 → "${item}" +1칸 추가!`); }
 }
 
 
-<<<<<<< HEAD
 
 // ══════════════════════════════════════
 // 채팅 패널
@@ -1096,8 +1056,6 @@ function setChatDot(status) {
   else if (status === 'offline') dot.classList.add('offline');
 }
 
-=======
->>>>>>> e640b6a42cfdd7c446d57f018d35df256f299e00
 // ══════════════════════════════════════
 // 디스코드 문의
 // ══════════════════════════════════════
