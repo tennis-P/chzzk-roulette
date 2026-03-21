@@ -76,7 +76,7 @@ export class ChatRoom {
       let accessToken = '';
       try {
         const tokenRes = await fetch(
-          `https://comm-api.game.naver.com/nng_main/v1/chats/access-token?channelId=${chatChannelId}&chatType=STREAMING`,
+          `https://comm-api.game.naver.com/nng_main/v2/chats/access-token?channelId=${chatChannelId}&chatType=STREAMING`,
           {
             headers: {
               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
