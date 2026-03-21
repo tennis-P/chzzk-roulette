@@ -3,7 +3,7 @@ export async function onRequest(context) {
   
     try {
       const response = await fetch(
-        `https://api.chzzk.naver.com/service/v1/channels/${channelId}/live-detail`,
+        `https://api.chzzk.naver.com/service/v2/channels/${channelId}/live-detail`,
         {
           headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
